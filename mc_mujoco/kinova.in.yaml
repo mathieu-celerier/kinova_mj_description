@@ -1,0 +1,2 @@
+xmlModelPath: "@KINOVA_XML_MODEL_PATH@"
+pdGainsPath: "@KINOVA_PDGAINS_PATH@"
