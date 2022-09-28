@@ -18,6 +18,7 @@
     <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL"/>
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL"/>
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL"/>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
   </asset>
 
   <contact>
