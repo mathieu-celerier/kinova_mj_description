@@ -18,8 +18,6 @@
     <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL"/>
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL"/>
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL"/>
-    <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="127" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01" />
-    <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1" />
   </asset>
 
   <contact>
