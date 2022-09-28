@@ -27,6 +27,8 @@
   </contact>
 
   <worldbody>
+    <light name="top" pos="0 0 2" mode="trackcom"/>
+
     <body name="base_link" pos="0 0 0" quat="1 0 0 0">
       <geom mesh="base_link"/>
       <body name="shoulder_link" pos="0 0 0.15643" quat="-3.67321e-06 1 0 0">
