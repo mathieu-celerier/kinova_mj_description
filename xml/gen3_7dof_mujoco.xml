@@ -6,7 +6,7 @@
   <default>
     <joint pos="0 0 0" axis="0 0 1" damping="0.2"/>
     <motor ctrllimited="false" forcelimited="false" />
-    <geom group="1" type="mesh" conaffinity="0" contype="0" rgba="0.75294 0.75294 0.75294 1"/>
+    <geom group="1" type="mesh" rgba="0.75294 0.75294 0.75294 1"/>
   </default>
 
   <asset>
