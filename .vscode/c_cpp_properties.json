@@ -1,0 +1,39 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/mathieu/ros_ws/devel/include/**",
+        "/home/mathieu/lib/mc_rtc_setup/catkin_data_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros/franka_control/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros/franka_example_controllers/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros/franka_gripper/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros/franka_hw/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros_interface/franka_interface/include/**",
+        "/home/mathieu/ros_ws/src/franka_ros_interface/franka_ros_controllers/include/**",
+        "/home/mathieu/ros_ws/src/ros_kortex/third_party/gazebo-pkgs/gazebo_grasp_plugin/include/**",
+        "/home/mathieu/ros_ws/src/ros_kortex/third_party/gazebo-pkgs/gazebo_version_helpers/include/**",
+        "/home/mathieu/ros_ws/src/ros_kortex/kortex_driver/include/**",
+        "/home/mathieu/ros_ws/src/panda_simulator/panda_gazebo/include/**",
+        "/home/mathieu/ros_ws/src/panda_simulator/panda_hardware_interface/include/**",
+        "/home/mathieu/ros_ws/src/panda_simulator/panda_sim_controllers/include/**",
+        "/home/mathieu/ros_ws/src/ros_kortex/third_party/roboticsgroup_upatras_gazebo_plugins/include/**",
+        "/home/mathieu/lib/mc_rtc_setup/catkin_data_ws/src/sawyer_simulator/sawyer_gazebo/include/**",
+        "/home/mathieu/lib/mc_rtc_setup/catkin_data_ws/src/sawyer_simulator/sawyer_hardware_interface/include/**",
+        "/home/mathieu/lib/mc_rtc_setup/catkin_data_ws/src/sawyer_simulator/sawyer_sim_controllers/include/**",
+        "/home/mathieu/lib/mc_rtc_setup/catkin_data_ws/src/sns_ik/sns_ik_lib/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -5,7 +5,7 @@
 
   <default>
     <joint pos="0 0 0" axis="0 0 1" damping="0.2"/>
-    <motor ctrllimited="false" forcelimited="false" />
+    <motor ctrllimited="false" forcelimited="true" />
     <geom group="1" type="mesh" rgba="0.75294 0.75294 0.75294 1"/>
   </default>
 
@@ -71,18 +71,18 @@
   </worldbody>
 
   <actuator>
-    <motor name="joint_1_motor" joint="joint_1" />
-    <motor name="joint_2_motor" joint="joint_2" />
-    <motor name="joint_3_motor" joint="joint_3" />
-    <motor name="joint_4_motor" joint="joint_4" />
-    <motor name="joint_5_motor" joint="joint_5" />
-    <motor name="joint_6_motor" joint="joint_6" />
-    <motor name="joint_7_motor" joint="joint_7" />
+    <motor name="joint_1_motor" joint="joint_1" forcerange="-39 39"/>
+    <motor name="joint_2_motor" joint="joint_2" forcerange="-39 39"/>
+    <motor name="joint_3_motor" joint="joint_3" forcerange="-39 39"/>
+    <motor name="joint_4_motor" joint="joint_4" forcerange="-39 39"/>
+    <motor name="joint_5_motor" joint="joint_5" forcerange="-9 9"/>
+    <motor name="joint_6_motor" joint="joint_6" forcerange="-9 9"/>
+    <motor name="joint_7_motor" joint="joint_7" forcerange="-9 9"/>
   </actuator>
 
   <sensor>
-    <force name="kinova_EEForceSensor_fsensor" site="ee_force" />
-    <torque name="kinova_EEForceSensor_tsensor" site="ee_force" />
+    <force name="EEForceSensor_fsensor" site="ee_force"/>
+    <torque name="EEForceSensor_tsensor" site="ee_force" />
   </sensor>
 
 </mujoco>
