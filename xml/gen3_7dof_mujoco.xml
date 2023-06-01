@@ -24,6 +24,10 @@
     <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL"/>
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL"/>
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL"/>
+    <mesh name="adapter_kinova_eegen3_robot_side" file="adapter_kinova_eegen3_robot_side.STL"/>
+    <mesh name="adapter_kinova_eegen3_FT_side_final" file="adapter_kinova_eegen3_FT_side_final.STL"/>
+    <mesh name="ATI-9105-TW-Mini58-E-X_X" file="ATI-9105-TW-Mini58-E-X_X.STL"/>
+    <mesh name="Jig_modified" file="Jig_modified.STL"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
   </asset>
 
@@ -65,8 +69,24 @@
                     <joint class="infiniteJoints" name="joint_7"/>
                     <geom mesh="bracelet_no_vision_link"/>
                     <body name="end_effector_link" quat="0 1 0 0" pos="0 0 -0.061525">
-                      <!-- site for end effector's f/t sensor -->
-                      <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
+                      <body name="FT_adapter_robot_link" pos="0 0 0" gravcomp="0">
+                        <inertial pos="1.22372e-06 1.37334e-07 0.0051041" quat="0.50675 0.493154 -0.506753 0.493157" mass="0.0552" diaginertia="5.48326e-05 2.97021e-05 2.60183e-05"/>
+                        <geom type="mesh" mesh="adapter_kinova_eegen3_robot_side"/>
+                        <body name="FT_adapter_FT_link" pos="0 0 0" quat="0.707388 0 0 0.706825" gravcomp="0">
+                          <inertial pos="3.65865e-05 5.94178e-05 0.0212852" quat="0.413877 0.573045 -0.414792 0.57295" mass="0.0662" diaginertia="5.61824e-05 3.13074e-05 3.01572e-05"/>
+                          <geom type="mesh" mesh="adapter_kinova_eegen3_FT_side_final"/>
+                          <body name="FT_link" pos="0 0 0.059" gravcomp="0">
+                            <inertial pos="-0.000474 -0.000266 -0.0149" quat="0.353329 0.608284 -0.360497 0.612528" mass="0.3319" diaginertia="0.000136331 9.47463e-05 9.13099e-05"/>
+                            <geom type="mesh" mesh="ATI-9105-TW-Mini58-E-X_X"/>
+                            <!-- site for end effector's f/t sensor -->
+                            <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
+                            <body name="handle_link" pos="0 0 0" quat="0.965926 0 0 0.25882" gravcomp="0">
+                              <inertial pos="1.22372e-06 1.37334e-07 0.0051041" quat="0.705545 -0.0469683 -0.0469683 0.705545" mass="0.0552" diaginertia="0.000170078 0.000149704 9.9845e-05"/>
+                              <geom type="mesh" mesh="Jig_modified"/>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
                     </body>
                   </body>
                 </body>
