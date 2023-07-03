@@ -24,6 +24,7 @@
     <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL"/>
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL"/>
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL"/>
+    <mesh name="weight_link" file="cube.STL"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
   </asset>
 
@@ -67,6 +68,10 @@
                     <body name="end_effector_link" quat="0 1 0 0" pos="0 0 -0.061525">
                       <!-- site for end effector's f/t sensor -->
                       <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
+                      <body name="weight_link" quat="1 0 0 0" pos="0 0 0">
+                        <inertial pos="0 0 0" mass="1.25" fullinertia="0.00208334 0.00208334 0.00208334 0 0 0" /> 
+                        <geom mesh="weight_link" />
+                      </body>
                     </body>
                   </body>
                 </body>
