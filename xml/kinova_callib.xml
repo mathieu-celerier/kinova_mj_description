@@ -1,0 +1,136 @@
+<mujoco model="gen3">
+  <compiler angle="radian" meshdir="../meshes" />
+
+  <option timestep="0.001" />
+
+  <default class="main">
+    <joint pos="0 0 0" axis="0 0 1" damping="0.2" />
+    <motor ctrllimited="false" forcelimited="true" />
+    <geom group="1" type="mesh" rgba="0.75294 0.75294 0.75294 1" contype="0" conaffinity="0" />
+    <default class="infiniteJoints">
+      <joint limited="false" />
+    </default>
+    <default class="limitedJoints">
+      <joint limited="false" />
+    </default>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL" />
+    <mesh name="shoulder_link" file="shoulder_link.STL" />
+    <mesh name="half_arm_1_link" file="half_arm_1_link.STL" />
+    <mesh name="half_arm_2_link" file="half_arm_2_link.STL" />
+    <mesh name="forearm_link" file="forearm_link.STL" />
+    <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL" />
+    <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL" />
+    <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
+    <mesh name="adapter" file="adapter.STL" scale="0.001 0.001 0.001" />
+    <mesh name="mounting" file="mounting.STL" />
+    <mesh name="DS4_Adapter" file="DS4_Adapter.STL" />
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+      height="3072" />
+  </asset>
+
+  <contact>
+    <exclude body1="base_link" body2="shoulder_link" />
+  </contact>
+
+  <worldbody>
+    <light name="top" pos="0 0 2" mode="trackcom" />
+
+    <body name="base_link" pos="0 0 0" quat="1 0 0 0">
+      <geom mesh="base_link" />
+      <body name="shoulder_link" pos="0 0 0.15643" quat="-3.67321e-06 1 0 0">
+        <inertial pos="-2.3e-05 -0.010364 -0.07336" quat="0.707051 0.0451246 -0.0453544 0.704263"
+          mass="1.3773" diaginertia="0.00488868 0.00457 0.00135132" />
+        <joint class="infiniteJoints" name="joint_1" armature="0.01928" />
+        <geom mesh="shoulder_link" />
+        <body name="half_arm_1_link" pos="0 0.005375 -0.12838" quat="0.707105 0.707108 0 0">
+          <inertial pos="-4.4e-05 -0.09958 -0.013278" quat="0.482348 0.516286 -0.516862 0.483366"
+            mass="1.1636" diaginertia="0.0113017 0.011088 0.00102532" />
+          <joint class="limitedJoints" name="joint_2" range="-2.41 2.41" armature="0.01928" />
+          <geom mesh="half_arm_1_link" />
+          <body name="half_arm_2_link" pos="0 -0.21038 -0.006375" quat="0.707105 -0.707108 0 0">
+            <inertial pos="-4.4e-05 -0.006641 -0.117892"
+              quat="0.706144 0.0213722 -0.0209128 0.707437" mass="1.1636"
+              diaginertia="0.0111633 0.010932 0.00100671" />
+            <joint class="infiniteJoints" name="joint_3" armature="0.01928" />
+            <geom mesh="half_arm_2_link" />
+            <body name="forearm_link" pos="0 0.006375 -0.21038" quat="0.707105 0.707108 0 0">
+              <inertial pos="-1.8e-05 -0.075478 -0.015006"
+                quat="0.483678 0.515961 -0.515859 0.483455" mass="0.9302"
+                diaginertia="0.00834839 0.008147 0.000598606" />
+              <joint class="limitedJoints" name="joint_4" range="-2.66 2.66" armature="0.01928" />
+              <geom mesh="forearm_link" />
+              <body name="spherical_wrist_1_link" pos="0 -0.20843 -0.006375"
+                quat="0.707105 -0.707108 0 0">
+                <inertial pos="1e-06 -0.009432 -0.063883"
+                  quat="0.703558 0.0707492 -0.0707492 0.703558" mass="0.6781"
+                  diaginertia="0.00165901 0.001596 0.000346988" />
+                <joint class="infiniteJoints" name="joint_5" armature="0.015" />
+                <geom mesh="spherical_wrist_1_link" />
+                <body name="spherical_wrist_2_link" pos="0 0.00017505 -0.10593"
+                  quat="0.707105 0.707108 0 0">
+                  <inertial pos="1e-06 -0.045483 -0.00965" quat="0.44426 0.550121 -0.550121 0.44426"
+                    mass="0.6781" diaginertia="0.00170087 0.001641 0.00035013" />
+                  <joint class="limitedJoints" name="joint_6" range="-2.23 2.23" armature="0.015" />
+                  <geom mesh="spherical_wrist_2_link" />
+                  <body name="bracelet_link" pos="0 -0.10593 -0.00017505"
+                    quat="0.707105 -0.707108 0 0">
+                    <inertial pos="-9.3e-05 0.000132 -0.022905"
+                      quat="-0.0368025 0.719402 -0.0444884 0.69219" mass="0.364"
+                      diaginertia="0.00024027 0.000222769 0.000213961" />
+                    <joint class="infiniteJoints" name="joint_7" armature="0.015" />
+                    <geom mesh="bracelet_no_vision_link" />
+                    <body name="end_effector_link" pos="0 0 -0.061525" quat="0 1 0 0">
+                      <body name="FT_adapter" pos="0 0 0.03" quat="1 0 0 0" gravcomp="0">
+                        <inertial pos="0.00132983 0.000509434 0.0172976"
+                          quat="0.0151383 0.724289 0.0089842 0.689272" mass="0.12"
+                          diaginertia="8.83157e-05 5.69452e-05 5.39501e-05" />
+                        <geom mesh="adapter" />
+                        <body name="FT_sensor_mounting" pos="0 0 0"
+                          gravcomp="0">
+                          <inertial pos="-6.16916e-05 0.000454732 0.0160471"
+                            quat="0.00666999 0.705455 0.0029597 0.708717" mass="0.14931"
+                            diaginertia="0.00013064 9.55556e-05 8.85449e-05" />
+                          <geom mesh="mounting" />
+                          <body name="FT_sensor_wrench" pos="0.0 0.0 0.035">
+                            <inertial pos="-1.9753e-07 0.00017443 -0.0070758"
+                              quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.081117"
+                              diaginertia="4.00481e-05 2.22149e-05 2.1858e-05" />
+                            <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
+                            <body name="DS4_Adapter" pos="0.0 0.0 0.00">
+                              <geom type="box" size="0.02 0.02 0.03" />
+                              <inertial pos="0.0 0.0 0.04" diaginertia="0.0012 0.0012 0.0012"
+                                mass="0.35" />
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-39 39" />
+    <motor name="joint_2_motor" joint="joint_2" gear="100" forcerange="-39 39" />
+    <motor name="joint_3_motor" joint="joint_3" gear="100" forcerange="-39 39" />
+    <motor name="joint_4_motor" joint="joint_4" gear="100" forcerange="-39 39" />
+    <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-9 9" />
+    <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-9 9" />
+    <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-9 9" />
+  </actuator>
+
+  <sensor>
+    <force name="EEForceSensor_fsensor" site="ee_force" />
+    <torque name="EEForceSensor_tsensor" site="ee_force" />
+  </sensor>
+
+</mujoco>
