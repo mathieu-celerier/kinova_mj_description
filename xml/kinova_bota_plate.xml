@@ -26,7 +26,7 @@
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
     <mesh name="adapter" file="adapter.STL" scale="0.001 0.001 0.001" />
     <mesh name="mounting" file="mounting.STL" />
-    <mesh name="DS4_Adapter" file="DS4_Adapter.STL" />
+    <mesh name="plate" file="plate.STL" scale="0.001 0.001 0.001"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -99,12 +99,18 @@
                               quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.081117"
                               diaginertia="4.00481e-05 2.22149e-05 2.1858e-05" />
                             <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
-                          </body>
-                          <body name="FT_sensor_imu" pos="0.0 0.0 0.0093">
-                            <inertial pos="-7.28164825396643e-05 1.54951151759942e-05 -0.00279059266096084"
-                              quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.00841533584597687"
-                              diaginertia="8.74962095262403e-07 4.41035649008913e-07 4.36835040253875e-07" />
-                            <site name="imu" size="0.01" pos="0.0 0.0 0.0" />
+                            <body name="plate" pos="0 0 0" euler="-1.57079632679 -0.78539816339 0"
+                              gravcomp="0">
+                              <inertial pos="-1.58E-05 -9.40E-02 1.58E-05" mass="0.1"
+                                fullinertia="5.58925E-04 1.45301E-04 5.58925E-04 1.52637E-07 6.50849E-05 -1.52637E-07" />
+                              <geom mesh="plate" />
+                            </body>
+                            <body name="FT_sensor_imu" pos="0.0 0.0 0.0093">
+                              <inertial pos="-7.28164825396643e-05 1.54951151759942e-05 -0.00279059266096084"
+                                quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.00841533584597687"
+                                diaginertia="8.74962095262403e-07 4.41035649008913e-07 4.36835040253875e-07" />
+                              <site name="imu" size="0.01" pos="0.0 0.0 0.0" />
+                            </body>
                           </body>
                         </body>
                       </body>
@@ -120,13 +126,13 @@
   </worldbody>
 
   <actuator>
-    <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-95 95" />
-    <motor name="joint_2_motor" joint="joint_2" gear="100" forcerange="-95 95" />
-    <motor name="joint_3_motor" joint="joint_3" gear="100" forcerange="-95 95" />
-    <motor name="joint_4_motor" joint="joint_4" gear="100" forcerange="-95 95" />
-    <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-45 45" />
-    <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-45 45" />
-    <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-45 45" />
+    <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-39 39" />
+    <motor name="joint_2_motor" joint="joint_2" gear="100" forcerange="-39 39" />
+    <motor name="joint_3_motor" joint="joint_3" gear="100" forcerange="-39 39" />
+    <motor name="joint_4_motor" joint="joint_4" gear="100" forcerange="-39 39" />
+    <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-9 9" />
+    <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-9 9" />
+    <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-9 9" />
   </actuator>
 
   <sensor>
