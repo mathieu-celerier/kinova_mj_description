@@ -25,7 +25,15 @@
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL" />
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
     <mesh name="bota_gena_mounting" file="BFT_KG3_IND2_SW/mounting.stl" scale="0.001 0.001 0.001" />
-    <mesh name="gripper_base_link" file="gripper_base_link.STL" />
+    <mesh name="robotiq_85_base_link_mesh" file="robotiq_base.STL" />
+    <mesh name="robotiq_85_left_knuckle_link_mesh" file="left_knuckle.STL" />
+    <mesh name="robotiq_85_right_knuckle_link_mesh" file="right_knuckle.STL" />
+    <mesh name="robotiq_85_left_finger_link_mesh" file="left_finger.STL" />
+    <mesh name="robotiq_85_right_finger_link_mesh" file="right_finger.STL" />
+    <mesh name="robotiq_85_left_inner_knuckle_link_mesh" file="left_inner_knuckle.STL" />
+    <mesh name="robotiq_85_right_inner_knuckle_link_mesh" file="right_inner_knuckle.STL" />
+    <mesh name="robotiq_85_left_finger_tip_link_mesh" file="left_finger_tip.STL" />
+    <mesh name="robotiq_85_right_finger_tip_link_mesh" file="right_finger_tip.STL" />
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -95,14 +103,55 @@
                           <inertial pos="5.1361e-07 -0.00023207 -0.0079102" mass="0.12139"
                             fullinertia="5.1194e-05 4.4555e-05 9.2665e-05 2.2369e-08 1.7665e-07 1.1698e-07" />
                           <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
-                          <body name="gripper_base_link" pos="0.0 0.0 0.0">
-                            <inertial pos="0 0 0.03" mass="0.8" diaginertia="0.001 0.001 0.001" />
-                            <geom mesh="gripper_base_link" />
-                            <body name="gripper_finger" pos="0 0 0.06">
-                              <inertial pos="0 0 0.03" mass="0.15" diaginertia="0.0001 0.0001 0.0001" />
-                              <joint name="robotiq_85_left_knuckle_joint" axis="0 1 0" range="0 0.8" />
-                              <geom type="box" size="0.014 0.01 0.04" pos="0 0.03 0.04" />
-                              <geom type="box" size="0.014 0.01 0.04" pos="0 -0.03 0.04" />
+                          <body name="robotiq_85_base_link" pos="0.0 0.0 0.0">
+                            <inertial pos="0.0 2.274e-05 0.03232288" mass="0.66320197"
+                              fullinertia="5.1617816e-04 5.8802208e-04 3.9462776e-04 2.936e-08 0.0 -3.2296e-07" />
+                            <geom mesh="robotiq_85_base_link_mesh" />
+                            <body name="robotiq_85_left_knuckle_link" pos="0.03060114 0.0 0.05490452">
+                              <inertial pos="0.01213197 0.0002 -0.00058647" mass="0.01384773208"
+                                fullinertia="3.5232e-7 2.31944e-6 2.23136e-6 0.0 1.1744e-7 0.0" />
+                              <joint name="robotiq_85_left_knuckle_joint" axis="0 -1 0" range="0 0.8" />
+                              <geom mesh="robotiq_85_left_knuckle_link_mesh" />
+                              <body name="robotiq_85_left_finger_link" pos="0.03152616 0.0 -0.00376347">
+                                <inertial pos="0.00346899 -0.00079447 0.01867121" mass="0.04260376752"
+                                  fullinertia="1.385792e-5 1.183208e-5 5.19672e-6 0.0 -2.17264e-6 0.0" />
+                                <geom mesh="robotiq_85_left_finger_link_mesh" />
+                                <body name="robotiq_85_left_finger_tip_link" pos="0.00563134 0.0 0.04718515">
+                                  <inertial pos="-0.01456706 -0.0008 0.01649701" mass="0.04268588744"
+                                    fullinertia="1.048152e-5 1.197888e-5 4.22784e-6 0.0 3.5232e-6 0.0" />
+                                  <joint name="robotiq_85_left_finger_tip_joint" axis="0 -1 0" />
+                                  <geom mesh="robotiq_85_left_finger_tip_link_mesh" />
+                                </body>
+                              </body>
+                            </body>
+                            <body name="robotiq_85_right_knuckle_link" pos="-0.03060114 0.0 0.05490452">
+                              <inertial pos="-0.01213197 0.0002 -0.00058647" mass="0.01384773208"
+                                fullinertia="3.5232e-7 2.31944e-6 2.23136e-6 0.0 -1.1744e-7 0.0" />
+                              <joint name="robotiq_85_right_knuckle_joint" axis="0 -1 0" />
+                              <geom mesh="robotiq_85_right_knuckle_link_mesh" />
+                              <body name="robotiq_85_right_finger_link" pos="-0.03152616 0.0 -0.00376347">
+                                <inertial pos="-0.00346899 -5.53e-06 0.01867121" mass="0.04260376752"
+                                  fullinertia="1.385792e-5 1.183208e-5 5.19672e-6 0.0 2.17264e-6 0.0" />
+                                <geom mesh="robotiq_85_right_finger_link_mesh" />
+                                <body name="robotiq_85_right_finger_tip_link" pos="-0.00563134 0.0 0.04718515">
+                                  <inertial pos="0.01456706 5e-05 0.01649701" mass="0.04268588744"
+                                    fullinertia="1.048152e-5 1.197888e-5 4.22784e-6 0.0 -3.5232e-6 0.0" />
+                                  <joint name="robotiq_85_right_finger_tip_joint" axis="0 -1 0" />
+                                  <geom mesh="robotiq_85_right_finger_tip_link_mesh" />
+                                </body>
+                              </body>
+                            </body>
+                            <body name="robotiq_85_left_inner_knuckle_link" pos="0.0127 0.0 0.06142">
+                              <inertial pos="0.01897699 0.00015001 0.02247101" mass="0.02969376448"
+                                fullinertia="9.57136e-6 8.69056e-6 8.19144e-6 0.0 -3.93424e-6 0.0" />
+                              <joint name="robotiq_85_left_inner_knuckle_joint" axis="0 -1 0" />
+                              <geom mesh="robotiq_85_left_inner_knuckle_link_mesh" />
+                            </body>
+                            <body name="robotiq_85_right_inner_knuckle_link" pos="-0.0127 0.0 0.06142">
+                              <inertial pos="-0.01926824 5.001e-05 0.02222178" mass="0.02969376448"
+                                fullinertia="9.42456e-6 8.69056e-6 8.33824e-6 0.0 3.9636e-6 0.0" />
+                              <joint name="robotiq_85_right_inner_knuckle_joint" axis="0 -1 0" />
+                              <geom mesh="robotiq_85_right_inner_knuckle_link_mesh" />
                             </body>
                           </body>
                         </body>
@@ -117,6 +166,14 @@
       </body>
     </body>
   </worldbody>
+
+  <equality>
+    <joint joint1="robotiq_85_right_knuckle_joint" joint2="robotiq_85_left_knuckle_joint" polycoef="0 -1 0 0 0" />
+    <joint joint1="robotiq_85_left_inner_knuckle_joint" joint2="robotiq_85_left_knuckle_joint" polycoef="0 1 0 0 0" />
+    <joint joint1="robotiq_85_right_inner_knuckle_joint" joint2="robotiq_85_left_knuckle_joint" polycoef="0 -1 0 0 0" />
+    <joint joint1="robotiq_85_left_finger_tip_joint" joint2="robotiq_85_left_knuckle_joint" polycoef="0 -1 0 0 0" />
+    <joint joint1="robotiq_85_right_finger_tip_joint" joint2="robotiq_85_left_knuckle_joint" polycoef="0 1 0 0 0" />
+  </equality>
 
   <actuator>
     <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-95 95" />
