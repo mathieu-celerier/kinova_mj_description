@@ -23,7 +23,8 @@
     <mesh name="forearm_link" file="forearm_link.STL" />
     <mesh name="spherical_wrist_1_link" file="spherical_wrist_1_link.STL" />
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL" />
-    <mesh name="bracelet_with_vision_link" file="bracelet_with_vision_link.STL" />
+    <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
+    <mesh name="gripper_base_link" file="gripper_base_link.STL" />
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -78,8 +79,18 @@
                       quat="-0.0368025 0.719402 -0.0444884 0.69219" mass="0.364"
                       diaginertia="0.00024027 0.000222769 0.000213961" />
                     <joint class="infiniteJoints" name="joint_7" armature="0.015" />
-                    <geom mesh="bracelet_with_vision_link" />
+                    <geom mesh="bracelet_no_vision_link" />
                     <body name="end_effector_link" pos="0 0 -0.061525" quat="0 1 0 0">
+                      <body name="gripper_base_link" pos="0 0 0" quat="1 0 0 0">
+                        <inertial pos="0 0 0.03" mass="0.8" diaginertia="0.001 0.001 0.001" />
+                        <geom mesh="gripper_base_link" />
+                        <body name="gripper_finger" pos="0 0 0.06">
+                          <inertial pos="0 0 0.03" mass="0.15" diaginertia="0.0001 0.0001 0.0001" />
+                          <joint name="robotiq_85_left_knuckle_joint" axis="0 1 0" range="0 0.8" />
+                          <geom type="box" size="0.014 0.01 0.04" pos="0 0.03 0.04" />
+                          <geom type="box" size="0.014 0.01 0.04" pos="0 -0.03 0.04" />
+                        </body>
+                      </body>
                     </body>
                   </body>
                 </body>
@@ -99,6 +110,7 @@
     <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-9 9" />
     <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-9 9" />
     <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-9 9" />
+    <motor name="gripper_motor" joint="robotiq_85_left_knuckle_joint" gear="1" forcerange="-20 20" />
   </actuator>
 
 </mujoco>
