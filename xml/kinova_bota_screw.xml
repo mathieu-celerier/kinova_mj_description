@@ -1,7 +1,7 @@
 <mujoco model="gen3">
   <compiler angle="radian" meshdir="../meshes" />
 
-  <option timestep="0.001" />
+  <option timestep="0.0002" />
 
   <default class="main">
     <joint pos="0 0 0" axis="0 0 1" damping="0.2" />
@@ -126,13 +126,13 @@
   </worldbody>
 
   <actuator>
-    <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-39 39" />
-    <motor name="joint_2_motor" joint="joint_2" gear="100" forcerange="-39 39" />
-    <motor name="joint_3_motor" joint="joint_3" gear="100" forcerange="-39 39" />
-    <motor name="joint_4_motor" joint="joint_4" gear="100" forcerange="-39 39" />
-    <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-9 9" />
-    <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-9 9" />
-    <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-9 9" />
+    <motor name="joint_1_motor" joint="joint_1" gear="100" forcerange="-1.05 1.05" />
+    <motor name="joint_2_motor" joint="joint_2" gear="100" forcerange="-1.05 1.05" />
+    <motor name="joint_3_motor" joint="joint_3" gear="100" forcerange="-1.05 1.05" />
+    <motor name="joint_4_motor" joint="joint_4" gear="100" forcerange="-1.05 1.05" />
+    <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-0.55 0.55" />
+    <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-0.55 0.55" />
+    <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-0.55 0.55" />
   </actuator>
 
   <sensor>
