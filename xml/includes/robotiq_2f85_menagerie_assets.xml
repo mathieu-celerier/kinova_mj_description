@@ -1,0 +1,14 @@
+<mujocoinclude>
+  <material name="robotiq_2f85_metal" rgba="0.58 0.58 0.58 1" />
+  <material name="robotiq_2f85_silicone" rgba="0.1882 0.1882 0.1882 1" />
+  <material name="robotiq_2f85_black" rgba="0.149 0.149 0.149 1" />
+
+  <mesh name="robotiq_2f85_base_mesh" file="menagerie_2f85/base.stl" />
+  <mesh name="robotiq_2f85_base_coupling_mesh" file="menagerie_2f85/base_coupling.stl" />
+  <mesh name="robotiq_2f85_open_mesh" file="menagerie_2f85/c-a01-85-open.stl" />
+  <mesh name="robotiq_2f85_driver_mesh" file="menagerie_2f85/driver.stl" />
+  <mesh name="robotiq_2f85_coupler_mesh" file="menagerie_2f85/coupler.stl" />
+  <mesh name="robotiq_2f85_spring_link_mesh" file="menagerie_2f85/spring_link.stl" />
+  <mesh name="robotiq_2f85_follower_mesh" file="menagerie_2f85/follower.stl" />
+  <mesh name="robotiq_2f85_tongue_mesh" file="menagerie_2f85/tongue.stl" />
+</mujocoinclude>

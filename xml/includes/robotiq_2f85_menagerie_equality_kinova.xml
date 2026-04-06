@@ -1,0 +1,8 @@
+<mujocoinclude>
+  <connect anchor="-0.01790131 -0.03137455 1.19178264" body1="robotiq_85_right_finger_link"
+    body2="robotiq_85_right_coupler_link" solimp="0.95 0.99 0.001" solref="0.005 1" />
+  <connect anchor="-0.01790131 -0.03137455 1.19178264" body1="robotiq_85_left_finger_link"
+    body2="robotiq_85_left_coupler_link" solimp="0.95 0.99 0.001" solref="0.005 1" />
+  <joint joint1="robotiq_85_right_knuckle_joint" joint2="robotiq_85_left_knuckle_joint"
+    polycoef="0 1 0 0 0" solimp="0.95 0.99 0.001" solref="0.005 1" />
+</mujocoinclude>

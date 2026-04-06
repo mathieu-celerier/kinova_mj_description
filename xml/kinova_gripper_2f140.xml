@@ -13,6 +13,18 @@
     <default class="limitedJoints">
       <joint limited="false" />
     </default>
+    <default class="2f140">
+      <joint damping="0.2" />
+      <general biastype="affine" ctrllimited="true" forcelimited="true" />
+      <default class="driver">
+        <joint range="0 0.7" armature="0.005" damping="0.1" solimplimit="0.95 0.99 0.001"
+          solreflimit="0.005 1" />
+      </default>
+      <default class="mimic">
+        <joint range="-0.8757 0.8757" armature="0.001" solimplimit="0.95 0.99 0.001"
+          solreflimit="0.005 1" />
+      </default>
+    </default>
   </default>
 
   <asset>
@@ -35,6 +47,12 @@
 
   <contact>
     <exclude body1="base_link" body2="shoulder_link" />
+    <exclude body1="robotiq_140_base_link" body2="left_outer_knuckle" />
+    <exclude body1="robotiq_140_base_link" body2="right_outer_knuckle" />
+    <exclude body1="robotiq_140_base_link" body2="left_inner_knuckle" />
+    <exclude body1="robotiq_140_base_link" body2="right_inner_knuckle" />
+    <exclude body1="left_inner_knuckle" body2="left_inner_finger" />
+    <exclude body1="right_inner_knuckle" body2="right_inner_finger" />
   </contact>
 
   <worldbody>
@@ -85,7 +103,7 @@
                     <joint class="infiniteJoints" name="joint_7" armature="0.015" />
                     <geom mesh="bracelet_no_vision_link" />
                     <body name="end_effector_link" pos="0 0 -0.061525" quat="0 1 0 0">
-                      <body name="robotiq_base_link" pos="0 0 0">
+                      <body name="robotiq_base_link" childclass="2f140" pos="0 0 0">
                             <body name="robotiq_140_base_link" pos="0 0 0" quat="0.707106781187 0 0 0.707106781187">
                           <inertial pos="8.625e-08 -4.6583e-06 0.03145" mass="0.22652"
                             fullinertia="0.00020005 0.00017832 0.00013478 -4.2442e-10 -2.9069e-10 -3.4402e-08" />
@@ -94,7 +112,7 @@
                             <inertial pos="-0.000200000000003065 0.0199435877845359 0.0292245259211331"
                               mass="0.00853198276973456"
                               fullinertia="2.89328108496468e-06 1.86719750325683e-06 1.21905238907251e-06 -1.57935047237397e-19 -1.93980378593255e-19 -1.21858577871576e-06" />
-                            <joint name="finger_joint" axis="-1 0 0" range="0 0.7" />
+                            <joint name="finger_joint" class="driver" axis="-1 0 0" />
                             <geom mesh="robotiq_140_outer_knuckle_mesh" />
                             <body name="left_outer_finger" pos="0 0.01821998610742 0.0260018192872234">
                               <inertial pos="0.00030115855001899 0.0373907951953854 -0.0208027427000385"
@@ -105,7 +123,7 @@
                                 <inertial pos="0.000299999999999317 0.0160078233491243 -0.0136945669206257"
                                   mass="0.0104003125914103"
                                   fullinertia="2.71909453810972e-06 7.69100314106116e-07 2.30315190420171e-06 1.35402465472579e-21 -7.1817349065269e-22 6.74715432769696e-07" />
-                                <joint name="left_inner_finger_joint" axis="1 0 0" />
+                                <joint name="left_inner_finger_joint" class="mimic" axis="1 0 0" />
                                 <geom mesh="robotiq_140_inner_finger_mesh" />
                                 <body name="left_inner_finger_pad" pos="0 0.0457554015893473 -0.0272203446692936">
                                   <inertial pos="0 0 0" mass="0.001" diaginertia="1e-6 1e-6 1e-6" />
@@ -118,7 +136,7 @@
                             <inertial pos="-0.000200000000003065 0.0199435877845359 0.0292245259211331"
                               mass="0.00853198276973456"
                               fullinertia="2.89328108496468e-06 1.86719750325683e-06 1.21905238907251e-06 -1.57935047237397e-19 -1.93980378593255e-19 -1.21858577871576e-06" />
-                            <joint name="right_outer_knuckle_joint" axis="1 0 0" />
+                            <joint name="right_outer_knuckle_joint" class="mimic" axis="1 0 0" />
                             <geom mesh="robotiq_140_outer_knuckle_mesh" />
                             <body name="right_outer_finger" pos="0 0.01821998610742 0.0260018192872234">
                               <inertial pos="0.00030115855001899 0.0373907951953854 -0.0208027427000385"
@@ -129,7 +147,7 @@
                                 <inertial pos="0.000299999999999317 0.0160078233491243 -0.0136945669206257"
                                   mass="0.0104003125914103"
                                   fullinertia="2.71909453810972e-06 7.69100314106116e-07 2.30315190420171e-06 1.35402465472579e-21 -7.1817349065269e-22 6.74715432769696e-07" />
-                                <joint name="right_inner_finger_joint" axis="1 0 0" />
+                                <joint name="right_inner_finger_joint" class="mimic" axis="1 0 0" />
                                 <geom mesh="robotiq_140_inner_finger_mesh" />
                                 <body name="right_inner_finger_pad" pos="0 0.0457554015893473 -0.0272203446692936">
                                   <inertial pos="0 0 0" mass="0.001" diaginertia="1e-6 1e-6 1e-6" />
@@ -142,14 +160,14 @@
                             <inertial pos="0.000123011831763771 0.0507850843201817 0.00103968640075166"
                               mass="0.0271177346495152"
                               fullinertia="2.61910379223783e-05 2.8270243746167e-06 2.83695868220296e-05 -2.43616858946494e-07 -6.37789906117123e-09 -5.37200748039765e-07" />
-                            <joint name="left_inner_knuckle_joint" axis="1 0 0" />
+                            <joint name="left_inner_knuckle_joint" class="mimic" axis="1 0 0" />
                             <geom mesh="robotiq_140_inner_knuckle_mesh" />
                           </body>
                           <body name="right_inner_knuckle" pos="0 0.0127 0.06142" quat="2.51300595726e-17 5.58379759889e-17 -0.911903350872 -0.41040501784">
                             <inertial pos="0.000123011831763771 0.0507850843201817 0.00103968640075166"
                               mass="0.0271177346495152"
                               fullinertia="2.61910379223783e-05 2.8270243746167e-06 2.83695868220296e-05 -2.43616858946494e-07 -6.37789906117123e-09 -5.37200748039765e-07" />
-                            <joint name="right_inner_knuckle_joint" axis="1 0 0" />
+                            <joint name="right_inner_knuckle_joint" class="mimic" axis="1 0 0" />
                             <geom mesh="robotiq_140_inner_knuckle_mesh" />
                           </body>
                         </body>
@@ -166,11 +184,16 @@
   </worldbody>
 
   <equality>
-    <joint joint1="right_outer_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.001" />
-    <joint joint1="left_inner_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.001" />
-    <joint joint1="right_inner_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.001" />
-    <joint joint1="left_inner_finger_joint" joint2="finger_joint" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.001" />
-    <joint joint1="right_inner_finger_joint" joint2="finger_joint" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.001" />
+    <joint joint1="right_outer_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0"
+      solimp="0.95 0.99 0.001" solref="0.005 1" />
+    <joint joint1="left_inner_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0"
+      solimp="0.95 0.99 0.001" solref="0.005 1" />
+    <joint joint1="right_inner_knuckle_joint" joint2="finger_joint" polycoef="0 -1 0 0 0"
+      solimp="0.95 0.99 0.001" solref="0.005 1" />
+    <joint joint1="left_inner_finger_joint" joint2="finger_joint" polycoef="0 1 0 0 0"
+      solimp="0.95 0.99 0.001" solref="0.005 1" />
+    <joint joint1="right_inner_finger_joint" joint2="finger_joint" polycoef="0 1 0 0 0"
+      solimp="0.95 0.99 0.001" solref="0.005 1" />
   </equality>
 
   <actuator>
@@ -181,7 +204,9 @@
     <motor name="joint_5_motor" joint="joint_5" gear="100" forcerange="-0.55 0.55" />
     <motor name="joint_6_motor" joint="joint_6" gear="100" forcerange="-0.55 0.55" />
     <motor name="joint_7_motor" joint="joint_7" gear="100" forcerange="-0.55 0.55" />
-    <motor name="gripper_motor" joint="finger_joint" gear="1" forcerange="-20 20" />
+    <general class="2f140" name="gripper_actuator" joint="finger_joint"
+      ctrlrange="0 255" forcerange="-20 20"
+      gainprm="0.2745098 0 0" biasprm="0 -100 -10" />
   </actuator>
 
 </mujoco>

@@ -1,0 +1,8 @@
+<mujocoinclude>
+  <exclude body1="robotiq_85_base_link" body2="robotiq_85_left_knuckle_link" />
+  <exclude body1="robotiq_85_base_link" body2="robotiq_85_right_knuckle_link" />
+  <exclude body1="robotiq_85_base_link" body2="robotiq_85_left_inner_knuckle_link" />
+  <exclude body1="robotiq_85_base_link" body2="robotiq_85_right_inner_knuckle_link" />
+  <exclude body1="robotiq_85_right_coupler_link" body2="robotiq_85_right_finger_link" />
+  <exclude body1="robotiq_85_left_coupler_link" body2="robotiq_85_left_finger_link" />
+</mujocoinclude>
