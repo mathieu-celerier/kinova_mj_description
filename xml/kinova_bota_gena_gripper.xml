@@ -130,24 +130,27 @@
                         <inertial pos="-9.2572e-05 9.9964e-05 0.010931" mass="0.12276"
                           fullinertia="6.7604e-05 7.1488e-05 0.0001292 -1.3153e-07 -6.7322e-08 9.2073e-08" />
                         <geom mesh="bota_gena_mounting" euler="0 0 -1.57079632679" />
-                        <body name="FT_sensor_imu" pos="0.01970359 0.00748613 0.0077875">
+                        <body name="FT_sensor_imu" pos="0.01970359 0.00748613 0.0077875"
+                          euler="0 0 -1.57079632679">
                           <inertial pos="-0.030023 -0.0045093 -0.0051888" mass="1.7362e-05"
                             fullinertia="2.2687e-11 2.2689e-11 4.2871e-11 -4.0788e-15 -9.8826e-21 -2.0704e-20" />
                           <site name="imu" size="0.01" pos="0.0 0.0 0.0" />
                         </body>
-                        <body name="FT_sensor_wrench" pos="0.0 0.0 0.03798">
+                        <body name="FT_sensor_wrench" pos="0.0 0.0 0.03798"
+                          euler="0 0 -1.57079632679">
                           <inertial pos="5.1361e-07 -0.00023207 -0.0079102" mass="0.12139"
                             fullinertia="5.1194e-05 4.4555e-05 9.2665e-05 2.2369e-08 1.7665e-07 1.1698e-07" />
                           <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
-                          <body name="robotiq_85_base_link" childclass="robotiq_2f85">
-                            <inertial mass="0.777441" pos="7.77116e-05 8.42713e-05 0.0311656"
-                              quat="0.704758 -0.00373684 -0.00570287 0.709415"
-                              diaginertia="0.000260285 0.000225381 0.000152708" />
-                            <geom class="visual" pos="0 0 0.0108" quat="0 0 0 1" mesh="robotiq_2f85_base_mesh" />
-                            <geom class="visual" pos="0 0 0.004" quat="1 -1 0 0" mesh="robotiq_2f85_base_coupling_mesh" />
-                            <geom class="visual" pos="0 0 0.0108" quat="1 0 0 0" material="robotiq_2f85_metal" mesh="robotiq_2f85_open_mesh" />
-                            <geom class="collision" mesh="robotiq_2f85_base_mesh" />
-                            <body name="robotiq_85_left_knuckle_link" pos="-0.0306011 0.00475 0.0657045" quat="1 -1 0 0">
+                          <body name="FT_sensor_tool_frame" euler="0 0 1.57079632679">
+                            <body name="robotiq_85_base_link" childclass="robotiq_2f85">
+                              <inertial mass="0.777441" pos="7.77116e-05 8.42713e-05 0.0311656"
+                                quat="0.704758 -0.00373684 -0.00570287 0.709415"
+                                diaginertia="0.000260285 0.000225381 0.000152708" />
+                              <geom class="visual" pos="0 0 0.0108" quat="0 0 0 1" mesh="robotiq_2f85_base_mesh" />
+                              <geom class="visual" pos="0 0 0.004" quat="1 -1 0 0" mesh="robotiq_2f85_base_coupling_mesh" />
+                              <geom class="visual" pos="0 0 0.0108" quat="1 0 0 0" material="robotiq_2f85_metal" mesh="robotiq_2f85_open_mesh" />
+                              <geom class="collision" mesh="robotiq_2f85_base_mesh" />
+                              <body name="robotiq_85_left_knuckle_link" pos="-0.0306011 0.00475 0.0657045" quat="1 -1 0 0">
                               <inertial mass="0.00899563" pos="-0.0175297 0.00165308 -0.00469625"
                                 quat="-0.469642 0.469642 -0.528617 0.528617"
                                 diaginertia="1.72352e-06 1.60906e-06 3.22006e-07" />
@@ -219,6 +222,7 @@
                                   <geom class="pad_box1" name="robotiq_85_right_pad1" />
                                   <geom class="pad_box2" name="robotiq_2f85_right_pad2" />
                                 </body>
+                              </body>
                               </body>
                             </body>
                           </body>
