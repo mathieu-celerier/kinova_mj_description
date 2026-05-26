@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(kinova_mj_description VERSION 1.0.0)
 
-if(NOT TARGET mc_mujoco)
+if(NOT TARGET mc_mujoco::mc_mujoco)
   find_package(mc_mujoco REQUIRED)
 endif()
 
