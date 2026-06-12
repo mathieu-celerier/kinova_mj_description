@@ -43,6 +43,16 @@ function(install_variant VARIANT)
   install(DIRECTORY pdgains DESTINATION "${MC_MUJOCO_SHARE_DESTINATION}/${VARIANT}" FILES_MATCHING PATTERN "*.dat")
 endfunction()
 
+function(install_object OBJECT)
+  set(GENERATED_YAML_DIR "${CMAKE_CURRENT_BINARY_DIR}/mc_mujoco")
+  file(MAKE_DIRECTORY "${GENERATED_YAML_DIR}")
+  configure_file("mc_mujoco/${OBJECT}.in.yaml" "${GENERATED_YAML_DIR}/${OBJECT}.yaml" @ONLY)
+  install(FILES "${GENERATED_YAML_DIR}/${OBJECT}.yaml" DESTINATION "${MC_MUJOCO_SHARE_DESTINATION}")
+  install(FILES "xml/${OBJECT}.xml" DESTINATION "${MC_MUJOCO_SHARE_DESTINATION}/${OBJECT}/xml")
+endfunction()
+
+install_object(kinova_ball)
+
 install_variant(kinova)
 install_variant(kinova_bota)
 install_variant(kinova_bota_ds4)
