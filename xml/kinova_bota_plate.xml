@@ -6,7 +6,7 @@
   <default class="main">
     <joint pos="0 0 0" axis="0 0 1" damping="0.2" />
     <motor ctrllimited="false" forcelimited="true" />
-    <geom group="1" type="mesh" rgba="0.75294 0.75294 0.75294 1" contype="1" conaffinity="1" />
+    <geom group="1" type="mesh" rgba="0.75294 0.75294 0.75294 1" contype="0" conaffinity="0" />
     <default class="infiniteJoints">
       <joint limited="false" />
     </default>
@@ -27,6 +27,7 @@
     <mesh name="adapter" file="adapter.STL" scale="0.001 0.001 0.001" />
     <mesh name="mounting" file="mounting.STL" />
     <mesh name="plate" file="plate.STL" scale="0.001 0.001 0.001"/>
+    <mesh name="plate_collision" file="plate_collision.stl" scale="0.001 0.001 0.001"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -103,7 +104,12 @@
                               gravcomp="0">
                               <inertial pos="-1.58E-05 -9.40E-02 1.58E-05" mass="0.1"
                                 fullinertia="5.58925E-04 1.45301E-04 5.58925E-04 1.52637E-07 6.50849E-05 -1.52637E-07" />
-                              <geom mesh="plate" />
+                              <geom name="plate_visual" mesh="plate" contype="0" conaffinity="0" />
+                              <geom name="plate_collision" mesh="plate_collision"
+                                contype="1" conaffinity="1" condim="6"
+                                friction="1.0 0.2 0.0005"
+                                solref="0.02 2.5"
+                                solimp="0.95 0.995 0.001 0.5 2" />
                             </body>
                             <body name="FT_sensor_imu" pos="0.0 0.0 0.0093">
                               <inertial pos="-7.28164825396643e-05 1.54951151759942e-05 -0.00279059266096084"
