@@ -26,8 +26,8 @@
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
     <mesh name="adapter" file="adapter.STL" scale="0.001 0.001 0.001" />
     <mesh name="mounting" file="mounting.STL" />
-    <mesh name="plate" file="plate.STL" scale="0.001 0.001 0.001"/>
-    <mesh name="plate_collision" file="plate_collision.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="plate" file="plate.STL"/>
+    <mesh name="plate_collision" file="plate_collision.stl"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -100,12 +100,16 @@
                               quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.081117"
                               diaginertia="4.00481e-05 2.22149e-05 2.1858e-05" />
                             <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
-                            <body name="plate" pos="0 0 0" euler="-1.57079632679 -0.78539816339 0"
-                              gravcomp="0">
-                              <inertial pos="-1.58E-05 -9.40E-02 1.58E-05" mass="0.1"
-                                fullinertia="5.58925E-04 1.45301E-04 5.58925E-04 1.52637E-07 6.50849E-05 -1.52637E-07" />
-                              <geom name="plate_visual" mesh="plate" contype="0" conaffinity="0" />
+                            <!-- Body frame matches the URDF "plate" link frame. The meshes are
+                                 authored in metres in that frame rotated +90 deg about Z, hence
+                                 the yaw on each geom. Striking face is the plane y = -0.035. -->
+                            <body name="plate" pos="0 0 0" gravcomp="0">
+                              <inertial pos="1.81E-05 -2.51566E-02 9.55300E-02" mass="0.226"
+                                fullinertia="1.124629E-03 1.382903E-03 3.658632E-04 -1.032380E-07 4.014063E-07 1.500394E-04" />
+                              <geom name="plate_visual" mesh="plate" euler="0 0 -1.5707963267948966"
+                                contype="0" conaffinity="0" />
                               <geom name="plate_collision" mesh="plate_collision"
+                                euler="0 0 -1.5707963267948966"
                                 contype="1" conaffinity="1" condim="6"
                                 friction="1.0 0.2 0.0005"
                                 solref="0.02 2.5"

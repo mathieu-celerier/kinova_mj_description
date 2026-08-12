@@ -25,7 +25,7 @@
     <mesh name="spherical_wrist_2_link" file="spherical_wrist_2_link.STL" />
     <mesh name="bracelet_no_vision_link" file="bracelet_no_vision_link.STL" />
     <mesh name="bota_gena_mounting" file="BFT_KG3_IND2_SW/mounting.stl" scale="0.001 0.001 0.001" />
-    <mesh name="plate" file="plate.STL" scale="0.001 0.001 0.001"/>
+    <mesh name="plate" file="plate.STL"/>
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
       height="3072" />
   </asset>
@@ -98,11 +98,12 @@
                             fullinertia="5.1194e-05 4.4555e-05 9.2665e-05 2.2369e-08 1.7665e-07 1.1698e-07" />
                           <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
                           <body name="FT_sensor_tool_frame" euler="0 0 1.57079632679">
-                            <body name="plate" pos="0 0 0" euler="-1.57079632679 -0.78539816339 0"
-                              gravcomp="0">
-                              <inertial pos="-1.58E-05 -9.40E-02 1.58E-05" mass="0.1"
-                                fullinertia="5.58925E-04 1.45301E-04 5.58925E-04 1.52637E-07 6.50849E-05 -1.52637E-07" />
-                              <geom mesh="plate" />
+                            <!-- Body frame matches the URDF "plate" link frame. plate.STL is
+                                 authored in metres in that frame rotated +90 deg about Z. -->
+                            <body name="plate" pos="0 0 0" gravcomp="0">
+                              <inertial pos="1.81E-05 -2.51566E-02 9.55300E-02" mass="0.226"
+                                fullinertia="1.124629E-03 1.382903E-03 3.658632E-04 -1.032380E-07 4.014063E-07 1.500394E-04" />
+                              <geom mesh="plate" euler="0 0 -1.5707963267948966" />
                             </body>
                           </body>
                         </body>
