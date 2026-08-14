@@ -98,18 +98,22 @@
                             <inertial pos="-1.9753e-07 0.00017443 -0.0070758"
                               quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.081117"
                               diaginertia="4.00481e-05 2.22149e-05 2.1858e-05" />
-                            <body name="FT_sensor_imu" pos="0.0 0.0 0.0093">
-                              <inertial pos="-7.28164825396643e-05 1.54951151759942e-05 -0.00279059266096084"
-                                quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.00841533584597687"
-                                diaginertia="8.74962095262403e-07 4.41035649008913e-07 4.36835040253875e-07" />
-                              <site name="imu" size="0.01" pos="0.0 0.0 0.0" />
-                            </body>
                             <site name="ee_force" size="0.01" pos="0.0 0.0 0.0" />
                             <body name="hook" pos="0 0 0" gravcomp="0">
                               <inertial pos="4.40561E-05 1.22892E-02 -3.48748E-03" mass="0.0368"
                                 diaginertia="2.14342E-05 1.50275E-05 3.50484E-05" />
                               <geom mesh="hook" />
                             </body>
+                          </body>
+                          <!-- Sibling of FT_sensor_wrench, not a child: the imu sits on the fixed side of the
+                               load cell, so it is not part of the payload the force sensor measures. The bare-
+                               sensor run measured 0.077-0.078 kg above the cell against FT_sensor_wrench's
+                               0.081117 alone; including the imu would predict 0.0895. Matches the URDF. -->
+                          <body name="FT_sensor_imu" pos="0.0 0.0 0.0093">
+                            <inertial pos="-7.28164825396643e-05 1.54951151759942e-05 -0.00279059266096084"
+                              quat="-0.000991824 0.707107 -0.000988236 0.707105" mass="0.00841533584597687"
+                              diaginertia="8.74962095262403e-07 4.41035649008913e-07 4.36835040253875e-07" />
+                            <site name="imu" size="0.01" pos="0.0 0.0 0.0" />
                           </body>
                         </body>
                       </body>
