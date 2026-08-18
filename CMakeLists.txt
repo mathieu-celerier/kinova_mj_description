@@ -7,9 +7,14 @@ option(SRC_MODE "Use files in the repository instead of installed files" OFF)
 
 if(HONOR_INSTALL_PREFIX)
   set(MC_MUJOCO_SHARE_DESTINATION "${CMAKE_INSTALL_PREFIX}")
-else()
+elseif(NOT TARGET mc_mujoco)
   find_package(mc_mujoco REQUIRED)
 endif()
+# Nothing to do in the remaining case: this tree was add_subdirectory()'d from inside mc_mujoco's
+# own build (its robots/CMakeLists.txt globs every child holding a CMakeLists.txt, the way
+# robots/jvrc_mj_description is consumed), so the mc_mujoco target already exists and
+# MC_MUJOCO_SHARE_DESTINATION is already set by mc_mujoco's top-level CMakeLists. Looking for an
+# *installed* mc_mujoco there fails, since the one being built is not installed yet.
 
 function(install_variant VARIANT)
   set(options)
