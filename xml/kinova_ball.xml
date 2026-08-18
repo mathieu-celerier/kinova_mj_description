@@ -12,7 +12,7 @@
         conaffinity="1"
         condim="6"
         friction="1.0 0.2 0.0005"
-        solref="0.02 2.5"
+        solref="0.002 1"
         solimp="0.95 0.995 0.001 0.5 2"/>
     </body>
   </worldbody>
